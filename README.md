@@ -1,4 +1,4 @@
-# Vert.x App
+# Vert.x
 
 ## 1. 简介
 
