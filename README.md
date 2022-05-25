@@ -20,10 +20,10 @@ Environment for **Vert.x** Appication
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.0 --build-arg VERSION=4.3.0 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.0 --build-arg VERSION=4.3.0 --build-arg JDK_VERSION=18 . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.0-alpine --build-arg VERSION=4.3.0 --build-arg JDK_VERSION=alpine . --push
 # latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.0 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.0 --build-arg JDK_VERSION=18 . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.3.0 --build-arg JDK_VERSION=alpine . --push
 ```
 

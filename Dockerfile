@@ -42,4 +42,4 @@ RUN echo '$CMD' >> entrypoint.sh
 RUN chmod +x ./init.sh
 RUN chmod +x ./entrypoint.sh
 
-# ENTRYPOINT ["sh", "./entrypoint.sh"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
