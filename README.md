@@ -43,15 +43,17 @@ services:
   svr:
     image: nnzbz/vertx
     init: true
-    # environment:
-    #   - JAVA_OPTS=-Xms100M -Xmx100M
+    environment:
+      - PROG_ARGS=run myvertx.gatex.verticle.MainVerticle -cp conf/*:lib/*.jar:myservice.jar --redeploy=myservice.jar,conf/* --ha -Dhazelcast.logging.type=slf4j --launcher-class=io.vertx.core.Launcher
+      - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+        #-Xms100M -Xmx100M
     volumes:
-      # 初始化脚本
-      #- /usr/local/xxx-svr/init.sh:/usr/local/myservice/init.sh:z
       # 配置文件目录
       - /usr/local/xxx-svr/conf/:/usr/local/myservice/conf/:z
+      # 配置日志目录(注意要先创建目录/var/log/xxx-svr/)
+      - /var/log/xxx-svr/:/usr/local/myservice/logs/:z
       # lib目录(存放外部jar包)
-      #- /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z
+      - /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z
       # 运行的jar包
       - /usr/local/xxx-svr/xxx-svr-x.x.x-fat.jar:/usr/local/myservice/myservice.jar:z
     deploy:
