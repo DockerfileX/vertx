@@ -56,6 +56,9 @@ services:
       - /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z
       # 运行的jar包
       - /usr/local/xxx-svr/xxx-svr-x.x.x-fat.jar:/usr/local/myservice/myservice.jar:z
+    logging:
+      options:
+        max-size: 50m
     deploy:
       placement:
         constraints:
