@@ -30,7 +30,16 @@ docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --b
 ## 4. 单机
 
 ```sh
-docker run -d --net=host --name 容器名称 --init -v /usr/local/外部程序所在目录:/usr/local/myservice --restart=always nnzbz/vertx
+docker run -d --init --restart=always \
+  --log-opt max-size=50m
+  -e PROG_ARGS=run myvertx.gatex.verticle.MainVerticle -cp conf/*:lib/*.jar:myservice.jar --ha -Dhazelcast.logging.type=slf4j --launcher-class=io.vertx.core.Launcher \
+  -e JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED \
+  -v /usr/local/xxx-svr/conf/:/usr/local/myservice/conf/:z \
+  -v /var/log/xxx-svr/:/usr/local/myservice/logs/:z \
+  -v /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z \
+  -v /usr/local/xxx-svr/xxx-svr-x.x.x-jar-with-dependencies.jar:/usr/local/myservice/myservice.jar:z \
+  --net=host \
+  --name 容器名称 nnzbz/vertx
 ```
 
 ## 5. Swarm
@@ -55,7 +64,7 @@ services:
       # lib目录(存放外部jar包)
       - /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z
       # 运行的jar包
-      - /usr/local/xxx-svr/xxx-svr-x.x.x-fat.jar:/usr/local/myservice/myservice.jar:z
+      - /usr/local/xxx-svr/xxx-svr-x.x.x-jar-with-dependencies.jar:/usr/local/myservice/myservice.jar:z
     logging:
       options:
         max-size: 50m
