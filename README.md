@@ -10,7 +10,7 @@ Environment for **Vert.x** Appication
 
 1. Alpine
 2. OpenJDK 18
-3. Vert.x 4.3.3
+3. Vert.x 4.3.4
 4. TZ=Asia/Shanghai
 5. C.UTF-8
 6. curl和telnet
@@ -20,11 +20,11 @@ Environment for **Vert.x** Appication
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.3 --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.3-alpine --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.4 --build-arg VERSION=4.3.4 --build-arg JDK_VERSION=18 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.4-alpine --build-arg VERSION=4.3.4 --build-arg JDK_VERSION=alpine . --push
 # latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.4 --build-arg JDK_VERSION=18 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.3.4 --build-arg JDK_VERSION=alpine . --push
 ```
 
 ## 4. 单机

@@ -23,6 +23,10 @@ WORKDIR ${WORKDIR}
 COPY --from=vertx /usr/local/vertx /usr/local/vertx
 ENV PATH=/usr/local/vertx/bin:$PATH
 
+# 删除旧的不兼容的jar包
+RUN rm -rf /usr/local/vertx/lib/curator-*
+RUN rm -rf /usr/local/vertx/lib/zookeeper-*
+
 # 复制文件
 COPY add/conf/log4j2.xml /usr/local/vertx/conf
 COPY add/log4j2.component.properties /usr/local/vertx
