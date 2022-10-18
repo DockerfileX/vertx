@@ -10,7 +10,7 @@ Environment for **Vert.x** Appication
 
 1. Alpine
 2. OpenJDK 18
-3. Vert.x 4.3.1
+3. Vert.x 4.3.3
 4. TZ=Asia/Shanghai
 5. C.UTF-8
 6. curl和telnet
@@ -20,11 +20,11 @@ Environment for **Vert.x** Appication
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.1 --build-arg VERSION=4.3.1 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.1-alpine --build-arg VERSION=4.3.1 --build-arg JDK_VERSION=alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.3 --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=18 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.3.3-alpine --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=alpine . --push
 # latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.1 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.3.1 --build-arg JDK_VERSION=alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=18 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.3.3 --build-arg JDK_VERSION=alpine . --push
 ```
 
 ## 4. 单机
@@ -56,6 +56,8 @@ services:
       - PROG_ARGS=run myvertx.gatex.verticle.MainVerticle -cp conf/*:lib/*.jar:myservice.jar --redeploy=myservice.jar,conf/* --ha -Dhazelcast.logging.type=slf4j --launcher-class=io.vertx.core.Launcher
       - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
         #-Xms100M -Xmx100M
+      # 设置Log4j2使用异步日志
+      - Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
     volumes:
       # 配置文件目录
       - /usr/local/xxx-svr/conf/:/usr/local/myservice/conf/:z
