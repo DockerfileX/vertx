@@ -33,7 +33,7 @@ docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --b
 docker run -d --init --restart=always \
   --log-opt max-size=50m
   -e PROG_ARGS=run myvertx.gatex.verticle.MainVerticle -cp conf/*:lib/*.jar:myservice.jar --ha -Dhazelcast.logging.type=slf4j --launcher-class=io.vertx.core.Launcher \
-  -e JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED \
+  -e JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED \
   -v /usr/local/xxx-svr/conf/:/usr/local/myservice/conf/:z \
   -v /var/log/xxx-svr/:/usr/local/myservice/logs/:z \
   -v /usr/local/xxx-svr/lib/:/usr/local/myservice/lib/:z \
@@ -54,10 +54,10 @@ services:
     init: true
     environment:
       - PROG_ARGS=run myvertx.gatex.verticle.MainVerticle -cp conf/*:lib/*.jar:myservice.jar --redeploy=myservice.jar,conf/* --ha -Dhazelcast.logging.type=slf4j --launcher-class=io.vertx.core.Launcher
-      - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+      - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED
         #-Xms100M -Xmx100M
       # 设置Log4j2使用异步日志
-      - Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+      #- Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
     volumes:
       # 配置文件目录
       - /usr/local/xxx-svr/conf/:/usr/local/myservice/conf/:z
