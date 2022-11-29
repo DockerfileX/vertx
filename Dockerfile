@@ -30,7 +30,7 @@ RUN rm -rf /usr/local/vertx/lib/zookeeper-*
 # 复制文件
 COPY add/conf/log4j2.xml /usr/local/vertx/conf
 COPY add/log4j2.component.properties /usr/local/vertx
-COPY add/lib/* /usr/local/vertx/lib
+COPY add/lib/*.jar /usr/local/vertx/lib
 
 # 运行jar包的文件名
 ENV MYSERVICE_FILE_NAME=myservice.jar
