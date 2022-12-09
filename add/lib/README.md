@@ -1,11 +1,31 @@
 # README
 
+- vertx-*-x.x.x.jar vert.x系列jar包
+- netty-all-x.x.x.jar netty系列jar包
+- bcpkix-jdk15on-x.xx.jar bouncycastle系列jar包
+- bcprov-jdk15on-x.xx.jar bouncycastle系列jar包
+- bcprov-ext-jdk15on-x.xx.jar bouncycastle系列jar包
+- bcutil-jdk15on-x.xx.jar bouncycastle系列jar包
+- javax.activation-x.x.x.jar bouncycastle依赖
+- validation-api-x.x.x.jar bouncycastle依赖
 - client-x.x.x.jar ongres系列jar包，连接postgre数据库需要
 - common-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- curator-*-x.x.x.jar 连接zookeeper
-- disruptor-x.x.x.jar log4j2异步需要
-- log4j-*-x.x.x.jar  log4j2系列jar包
 - saslprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
 - stringprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- vertx-*-x.x.x.jar vert.x系统jar包
+- ojdbc11_g-x.x.x.x.jar Oracle jdbc系列jar包
+- curator-*-x.x.x.jar 连接zookeeper
 - zookeeper-*-x.x.x.jar 连接zookeeper需要
+- jackson-*-x.x.x.jar jackson系列jar包
+- log4j-*-x.x.x.jar  log4j2系列jar包
+- disruptor-x.x.x.jar log4j2异步需要
+- mapstruct-x.x.x.jar mapstruct系列jar包
+- ulid-creator-x.x.x.jar ulid的jar包
+- audience-annotations-x.x.x.jar zookeeper依赖
+- guice-x.x.x.jar google guice系列jar包
+- aopalliance-x.x.jar google guice依赖
+- javax.inject-x.jar google guice依赖
+- pulsar-*-x.x.x.jar Pulsar系列jar包
+- bouncy-castle-bc-x.x.x-pkg.jar Pulsar系列jar包
+- javax.ws.rs-api-x.x.jar Pulsar依赖
+- jcommander-x.xx.jar Pulsar依赖
+- validation-api-x.x.x.jar Pulsar依赖

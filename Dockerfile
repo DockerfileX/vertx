@@ -15,7 +15,7 @@ LABEL description="Environment for exec Vert.x Appication\
     为运行Vert.x而提供的环境"
 
 # 设置工作目录
-ENV WORKDIR=/usr/local/myservice
+ENV WORKDIR=/usr/local/vertx
 RUN mkdir -p ${WORKDIR}
 WORKDIR ${WORKDIR}
 
@@ -24,8 +24,13 @@ COPY --from=vertx /usr/local/vertx /usr/local/vertx
 ENV PATH=/usr/local/vertx/bin:$PATH
 
 # 删除旧的不兼容的jar包
+RUN rm -rf /usr/local/vertx/lib/netty-3.*
+RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
+RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
+RUN rm -rf /usr/local/vertx/lib/jackson-*
 RUN rm -rf /usr/local/vertx/lib/zookeeper-*
+RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
 
 # 复制文件
 COPY add/conf/log4j2.xml /usr/local/vertx/conf

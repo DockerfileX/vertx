@@ -45,6 +45,8 @@
 		<Logger name="io.netty" level="info" />
 		<Logger name="io.netty.handler.logging.LoggingHandler" level="debug" />
 		<Logger name="org.apache.zookeeper.ClientCnxn" level="info" />
+		<Logger name="org.apache.pulsar" level="info" />
+		<Logger name="com.xxl.job" level="info" />
 	</Loggers>
 
 </Configuration>
