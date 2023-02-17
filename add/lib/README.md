@@ -29,3 +29,6 @@
 - javax.ws.rs-api-x.x.jar Pulsar依赖
 - jcommander-x.xx.jar Pulsar依赖
 - validation-api-x.x.x.jar Pulsar依赖
+- org.eclipse.jgit-x.x.x.jar jgit系列jar包
+- JavaEWAH-x.x.x.jar jgit依赖
+- jsch-x.x.x.jar jgit依赖
