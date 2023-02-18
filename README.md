@@ -41,19 +41,26 @@ services:
     image: nnzbz/vertx:4.3.8
     init: true
     environment:
-      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/vertx-option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
+      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/vertx-option.json --ha --hagroup xxx
       - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED
       #- Xms100M -Xmx100M
+      # 设置vertx日志使用slf4j
+      - vertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory
+      # 设置hazelcast日志使用slf4j
+      - hazelcast.logging.type=slf4j
+      # jul to log4j
+      #- java.util.logging.manager=org.apache.logging.log4j.jul.LogManager
       # 设置Log4j2使用异步日志
       #- Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
     volumes:
       # 初始化执行的脚本
-      #- /usr/local/vertx/init.sh:/usr/local/vertx/init.sh:z
+      #- /usr/local/stack/init.sh:/usr/local/vertx/init.sh:z
       # 配置文件
       - /usr/local/conf/xxx-svr-config.json:/usr/local/vertx/conf/config.json:z
       - /usr/local/conf/vertx-option.json:/usr/local/vertx/conf/vertx-option.json:z
       - /usr/local/conf/cluster.xml:/usr/local/vertx/conf/cluster.xml:z
       - /usr/local/conf/zookeeper.json:/usr/local/vertx/conf/zookeeper.json:z
+      #- /usr/local/conf/log4j2.xml:/usr/local/vertx/conf/log4j2.xml:z
       # 配置日志目录(注意要先创建目录/var/log/xxx-svr/)
       - /var/log/xxx-svr/:/usr/local/vertx/logs/:z
       # 外部jar包

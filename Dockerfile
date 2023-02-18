@@ -28,6 +28,7 @@ RUN rm -rf /usr/local/vertx/lib/netty-3.*
 RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
+RUN rm -rf /usr/local/vertx/lib/commons-io-*
 RUN rm -rf /usr/local/vertx/lib/jackson-*
 RUN rm -rf /usr/local/vertx/lib/zookeeper-*
 RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
