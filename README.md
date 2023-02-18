@@ -42,8 +42,11 @@ services:
     init: true
     environment:
       - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/vertx-option.json --ha --hagroup xxx
-      - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED
+      - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
       #- Xms100M -Xmx100M
+      - io.netty.tryReflectionSetAccessible=true
+      # 设置vertx的zookeeper的配置文件
+      - vertx.zookeeper.config=conf/zookeeper.json
       # 设置vertx日志使用slf4j
       - vertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory
       # 设置hazelcast日志使用slf4j

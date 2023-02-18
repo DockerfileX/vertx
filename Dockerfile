@@ -30,12 +30,12 @@ RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
 RUN rm -rf /usr/local/vertx/lib/commons-io-*
 RUN rm -rf /usr/local/vertx/lib/jackson-*
+RUN rm -rf /usr/local/vertx/lib/slf4j-*
 RUN rm -rf /usr/local/vertx/lib/zookeeper-*
 RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
 
 # 复制文件
 COPY add/conf/* /usr/local/vertx/conf
-COPY add/log4j2.component.properties /usr/local/vertx
 COPY add/lib/*.jar /usr/local/vertx/lib
 
 # 运行jar包的文件名

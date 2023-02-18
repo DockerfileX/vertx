@@ -18,7 +18,7 @@
 - audience-annotations-x.x.x.jar zookeeper依赖
 - commons-io-x.x.x.jar zookeeper依赖
 - jackson-*-x.x.x.jar jackson系列jar包
-- log4j-*-x.x.x.jar  log4j2系列jar包
+- ~~log4j-*-x.x.x.jar  log4j2系列jar包~~
 - disruptor-x.x.x.jar log4j2异步需要
 - mapstruct-x.x.x.jar mapstruct系列jar包
 - ulid-creator-x.x.x.jar ulid的jar包
