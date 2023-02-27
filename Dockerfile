@@ -24,6 +24,7 @@ COPY --from=vertx /usr/local/vertx /usr/local/vertx
 ENV PATH=/usr/local/vertx/bin:$PATH
 
 # 删除旧的不兼容的jar包
+RUN rm -rf /usr/local/vertx/lib/hazelcast-*
 RUN rm -rf /usr/local/vertx/lib/netty-3.*
 RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
