@@ -41,7 +41,7 @@ services:
     image: nnzbz/vertx:4.3.8
     init: true
     environment:
-      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/vertx-option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
+      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
       - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
       #- Xms100M -Xmx100M
       - io.netty.tryReflectionSetAccessible=true
@@ -57,8 +57,8 @@ services:
       # 初始化执行的脚本
       #- /usr/local/stack/init.sh:/usr/local/vertx/init.sh:z
       # 配置文件
+      - /usr/local/conf/xxx-svr-option.json:/usr/local/vertx/conf/option.json:z
       - /usr/local/conf/xxx-svr-config.json:/usr/local/vertx/conf/config.json:z
-      - /usr/local/conf/vertx-option.json:/usr/local/vertx/conf/vertx-option.json:z
       - /usr/local/conf/cluster.xml:/usr/local/vertx/conf/cluster.xml:z
       - /usr/local/conf/zookeeper.json:/usr/local/vertx/conf/zookeeper.json:z
       #- /usr/local/conf/log4j2.xml:/usr/local/vertx/conf/log4j2.xml:z
@@ -100,7 +100,7 @@ networks:
                 "path": "local",
                 "filesets": [
                     {
-                        "pattern": "xxx.yml",
+                        "pattern": "xxx-svr.yml",
                         "format": "yaml"
                     }
                 ]
@@ -110,11 +110,17 @@ networks:
 }
 ```
 
-- /usr/local/conf/vertx-option.json
+- /usr/local/conf/xxx-svr-option.json
 
 ```json
 {
-    "preferNativeTransport": true
+    "preferNativeTransport": true,
+    "tracingOptions": {
+        "serviceName": "xxx-svr",
+        "senderOptions": {
+            "senderEndpoint": "http://zipkin_zipkin:9411/api/v2/spans"
+        }
+    }
 }
 ```
 
