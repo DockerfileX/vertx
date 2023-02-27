@@ -18,8 +18,13 @@
 - audience-annotations-x.x.x.jar zookeeper依赖
 - commons-io-x.x.x.jar zookeeper依赖
 - jackson-*-x.x.x.jar jackson系列jar包
+- slf4j-api-x.x.x.jar slf4j系列jar包
+- jcl-over-slf4j-x.x.x.jar slf4j系列jar包
+- jul-to-slf4j-x.x.x.jar slf4j系列jar包
 - ~~log4j-*-x.x.x.jar  log4j2系列jar包~~
-- disruptor-x.x.x.jar log4j2异步需要
+- ~~disruptor-x.x.x.jar log4j2异步需要~~
+- logback-classic-x.x.x.jar logback系列jar包
+- logback-core-x.x.x.jar logback系列jar包
 - mapstruct-x.x.x.jar mapstruct系列jar包
 - ulid-creator-x.x.x.jar ulid的jar包
 - guice-x.x.x.jar google guice系列jar包
@@ -33,3 +38,9 @@
 - org.eclipse.jgit-x.x.x.jar jgit系列jar包
 - JavaEWAH-x.x.x.jar jgit依赖
 - jsch-x.x.x.jar jgit依赖
+- vert-zipkin-x.x.x.jar zipkin系列jar包
+- zipkin-x.x.x.jar zipkin系列jar包
+- zipkin-reporter-x.x.x.jar zipkin系列jar包
+- zipkin-reporter-brave-x.x.x.jar zipkin系列jar包
+- brave-x.x.x.jar zipkin依赖
+- brave-instrumentation-http-x.x.x.jar
