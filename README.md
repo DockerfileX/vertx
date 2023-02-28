@@ -47,8 +47,6 @@ services:
       - io.netty.tryReflectionSetAccessible=true
       # 设置vertx的zookeeper的配置文件
       - vertx.zookeeper.config=conf/zookeeper.json
-      # 设置vertx日志使用slf4j
-      - vertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory
       # jul to log4j
       #- java.util.logging.manager=org.apache.logging.log4j.jul.LogManager
       # 设置Log4j2使用异步日志
