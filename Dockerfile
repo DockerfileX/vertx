@@ -23,6 +23,10 @@ WORKDIR ${WORKDIR}
 COPY --from=vertx /usr/local/vertx /usr/local/vertx
 ENV PATH=/usr/local/vertx/bin:$PATH
 
+# 删除冲突的配置文件
+RUN rm -rf /usr/local/vertx/conf/default-cluster.xml
+RUN rm -rf /usr/local/vertx/conf/logging.properties
+
 # 删除旧的不兼容的jar包
 RUN rm -rf /usr/local/vertx/lib/hazelcast-*
 RUN rm -rf /usr/local/vertx/lib/netty-3.*

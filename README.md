@@ -53,15 +53,15 @@ services:
       #- java.util.logging.manager=org.apache.logging.log4j.jul.LogManager
       # 设置Log4j2使用异步日志
       #- Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+      # logback使用异步日志
+      - log.async=true
     volumes:
       # 初始化执行的脚本
       #- /usr/local/stack/init.sh:/usr/local/vertx/init.sh:z
       # 配置文件
       - /usr/local/conf/xxx-svr-option.json:/usr/local/vertx/conf/option.json:z
       - /usr/local/conf/xxx-svr-config.json:/usr/local/vertx/conf/config.json:z
-      - /usr/local/conf/cluster.xml:/usr/local/vertx/conf/cluster.xml:z
       - /usr/local/conf/zookeeper.json:/usr/local/vertx/conf/zookeeper.json:z
-      #- /usr/local/conf/log4j2.xml:/usr/local/vertx/conf/log4j2.xml:z
       # 配置日志目录(注意要先创建目录/var/log/xxx-svr/)
       - /var/log/xxx-svr/:/usr/local/vertx/logs/:z
       # 外部jar包

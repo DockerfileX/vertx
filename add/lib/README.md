@@ -25,6 +25,8 @@
 - ~~disruptor-x.x.x.jar log4j2异步需要~~
 - logback-classic-x.x.x.jar logback系列jar包
 - logback-core-x.x.x.jar logback系列jar包
+- janino-x.x.x.jar logback依赖，在配置中使用if需要
+- commons-compiler-x.x.x.jar janino依赖，在logback配置中使用if需要
 - mapstruct-x.x.x.jar mapstruct系列jar包
 - ulid-creator-x.x.x.jar ulid的jar包
 - guice-x.x.x.jar google guice系列jar包
