@@ -1,7 +1,7 @@
 # README
 
 - vertx-*-x.x.x.jar vert.x系列jar包
-- netty-all-x.x.x.jar netty系列jar包
+- netty-x.x.x.jar netty系列jar包
 - bcpkix-jdk15on-x.xx.jar bouncycastle系列jar包
 - bcprov-jdk15on-x.xx.jar bouncycastle系列jar包
 - bcprov-ext-jdk15on-x.xx.jar bouncycastle系列jar包

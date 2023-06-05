@@ -81,15 +81,20 @@
 
     <root level="DEBUG">
         <appender-ref ref="console" />
-        <if condition='isDefined("log.async")&amp;&amp;property("log.async").equals("true")'>
-            <then>
+    </root>
+    <if condition='isDefined("log.async")&amp;&amp;property("log.async").equals("true")'>
+        <then>
+            <root>
                 <appender-ref ref="async-file-log" />
                 <appender-ref ref="async-file-err" />
-            </then>
-            <else>
+            </root>
+        </then>
+        <else>
+            <root>
                 <appender-ref ref="file-log" />
                 <appender-ref ref="file-err" />
-            </else>
-        </if>
-    </root>
+            </root>
+        </else>
+    </if>
+
 </configuration>

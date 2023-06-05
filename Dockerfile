@@ -29,7 +29,8 @@ RUN rm -rf /usr/local/vertx/conf/logging.properties
 
 # 删除旧的不兼容的jar包
 RUN rm -rf /usr/local/vertx/lib/hazelcast-*
-RUN rm -rf /usr/local/vertx/lib/netty-3.*
+RUN rm -rf /usr/local/vertx/lib/netty-*
+RUN rm -rf /usr/local/vertx/lib/netty-tcnative-*
 RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
@@ -46,7 +47,10 @@ COPY add/lib/*.jar /usr/local/vertx/lib
 # 运行jar包的文件名
 ENV MYSERVICE_FILE_NAME=myservice.jar
 
+# 生成init.sh文件
 RUN touch init.sh
+
+# 生成entrypoint.sh文件
 RUN echo '#!/bin/sh' >> entrypoint.sh
 RUN echo 'set +e' >> entrypoint.sh
 RUN echo 'sh ./init.sh' >> entrypoint.sh
@@ -54,7 +58,9 @@ RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo $CMD' >> entrypoint.sh
 RUN echo '$CMD' >> entrypoint.sh
 
+# 授权执行
 RUN chmod +x ./init.sh
 RUN chmod +x ./entrypoint.sh
 
+# 执行
 ENTRYPOINT ["sh", "./entrypoint.sh"]
