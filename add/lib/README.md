@@ -1,23 +1,6 @@
 # README
 
 - vertx-*-x.x.x.jar vert.x系列jar包
-- netty-x.x.x.jar netty系列jar包
-- bcpkix-jdk15on-x.xx.jar bouncycastle系列jar包
-- bcprov-jdk15on-x.xx.jar bouncycastle系列jar包
-- bcprov-ext-jdk15on-x.xx.jar bouncycastle系列jar包
-- bcutil-jdk15on-x.xx.jar bouncycastle系列jar包
-- javax.activation-x.x.x.jar bouncycastle依赖
-- validation-api-x.x.x.jar bouncycastle依赖
-- client-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- common-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- saslprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- stringprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
-- ojdbc11_g-x.x.x.x.jar Oracle jdbc系列jar包
-- curator-*-x.x.x.jar 连接zookeeper
-- zookeeper-*-x.x.x.jar 连接zookeeper需要
-- audience-annotations-x.x.x.jar zookeeper依赖
-- commons-io-x.x.x.jar zookeeper依赖
-- jackson-*-x.x.x.jar jackson系列jar包
 - slf4j-api-x.x.x.jar slf4j系列jar包
 - jcl-over-slf4j-x.x.x.jar slf4j系列jar包
 - jul-to-slf4j-x.x.x.jar slf4j系列jar包
@@ -27,23 +10,48 @@
 - logback-core-x.x.x.jar logback系列jar包
 - janino-x.x.x.jar logback依赖，在配置中使用if需要
 - commons-compiler-x.x.x.jar janino依赖，在logback配置中使用if需要
+- jackson-*-x.x.x.jar jackson系列jar包
+- ~~snakeyaml-2.0.jar(原生镜像已有提供)~~
+- guava-x.x.x-jre.jar Guava系列jar包
+- checker-qual-x.x.x.jar Guava依赖
+- error_prone_annotations-x.x.x.jar Guava依赖
+- failureaccess-x.x.x.jar Guava依赖
+- j2objc-annotations-x.x.jar Guava依赖
+- jsr305-x.x.x.jar Guava依赖
+- listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar Guava依赖
+- bcpkix-jdk18on-x.xx.jar bouncycastle系列jar包
+- bcprov-jdk18on-x.xx.jar bouncycastle系列jar包
+- bcprov-ext-jdk18on-x.xx.jar bouncycastle系列jar包
+- bcutil-jdk18on-x.xx.jar bouncycastle系列jar包
+- client-x.x.x.jar ongres系列jar包，连接postgre数据库需要
+- common-x.x.x.jar ongres系列jar包，连接postgre数据库需要
+- saslprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
+- stringprep-x.x.x.jar ongres系列jar包，连接postgre数据库需要
+- ojdbc11_g-x.x.x.x.jar Oracle jdbc系列jar包
+- zookeeper-x.x.x.jar zookeeper系列jar包
+- zookeeper-jute-x.x.x.jar zookeeper系列jar包
+- audience-annotations-x.x.x.jar zookeeper依赖
+- commons-io-x.x.x.jar zookeeper依赖
+- curator-*-x.x.x.jar Curator系列jar包，连接zookeeper需要
 - mapstruct-x.x.x.jar mapstruct系列jar包
 - ulid-creator-x.x.x.jar ulid的jar包
 - guice-x.x.x.jar google guice系列jar包
 - aopalliance-x.x.jar google guice依赖
-- javax.inject-x.jar google guice依赖
+- jakarta.inject-api-x.x.x.jar google guice依赖
 - pulsar-*-x.x.x.jar Pulsar系列jar包
 - bouncy-castle-bc-x.x.x-pkg.jar Pulsar系列jar包
+- javax.activation-x.x.x.jar Pulsar依赖
 - javax.ws.rs-api-x.x.jar Pulsar依赖
+- ~~jcip-annotations-x.x.jar Pulsar依赖(原生镜像已有提供)~~
 - jcommander-x.xx.jar Pulsar依赖
+- ~~protobuf-java-x.x.x.jar Pulsar依赖(原生镜像已有提供)~~
 - validation-api-x.x.x.jar Pulsar依赖
 - org.eclipse.jgit-x.x.x.jar jgit系列jar包
 - JavaEWAH-x.x.x.jar jgit依赖
-- jsch-x.x.x.jar jgit依赖
 - hazelcast-x.x.x.jar hazelcast系列jar包
 - vert-zipkin-x.x.x.jar zipkin系列jar包
 - zipkin-x.x.x.jar zipkin系列jar包
 - zipkin-reporter-x.x.x.jar zipkin系列jar包
 - zipkin-reporter-brave-x.x.x.jar zipkin系列jar包
-- brave-x.x.x.jar zipkin依赖
-- brave-instrumentation-http-x.x.x.jar
+- brave-x.x.x.jar zipkin的埋点库，zipkin依赖
+- brave-instrumentation-http-x.x.x.jar zipkin的埋点库，zipkin依赖

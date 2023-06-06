@@ -29,15 +29,22 @@ RUN rm -rf /usr/local/vertx/conf/logging.properties
 
 # 删除旧的不兼容的jar包
 RUN rm -rf /usr/local/vertx/lib/hazelcast-*
-RUN rm -rf /usr/local/vertx/lib/netty-*
-RUN rm -rf /usr/local/vertx/lib/netty-tcnative-*
+# RUN rm -rf /usr/local/vertx/lib/netty-*
 RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
 RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
+RUN rm -rf /usr/local/vertx/lib/slf4j-*
+RUN rm -rf /usr/local/vertx/lib/jackson-*
+RUN rm -rf /usr/local/vertx/lib/guava-*
+RUN rm -rf /usr/local/vertx/lib/checker-qual-*
+RUN rm -rf /usr/local/vertx/lib/error_prone_annotations-*
+RUN rm -rf /usr/local/vertx/lib/failureaccess-*
+RUN rm -rf /usr/local/vertx/lib/j2objc-annotations-*
+RUN rm -rf /usr/local/vertx/lib/jsr305-*
+RUN rm -rf /usr/local/vertx/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+RUN rm -rf /usr/local/vertx/lib/zookeeper-*
+RUN rm -rf /usr/local/vertx/lib/commons-io-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
 RUN rm -rf /usr/local/vertx/lib/commons-io-*
-RUN rm -rf /usr/local/vertx/lib/jackson-*
-RUN rm -rf /usr/local/vertx/lib/slf4j-*
-RUN rm -rf /usr/local/vertx/lib/zookeeper-*
 RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
 
 # 复制文件
