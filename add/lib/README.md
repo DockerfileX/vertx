@@ -52,7 +52,7 @@
 - JavaEWAH-x.x.x.jar jgit依赖
 - jsch-x.x.x.jar jgit依赖
 - hazelcast-x.x.x.jar hazelcast系列jar包
-- vert-zipkin-x.x.x.jar zipkin系列jar包
+- vertx-zipkin-x.x.x.jar zipkin系列jar包
 - zipkin-x.x.x.jar zipkin系列jar包
 - zipkin-reporter-x.x.x.jar zipkin系列jar包
 - zipkin-reporter-brave-x.x.x.jar zipkin系列jar包

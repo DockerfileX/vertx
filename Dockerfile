@@ -61,6 +61,10 @@ RUN touch init.sh
 RUN echo '#!/bin/sh' >> entrypoint.sh
 RUN echo 'set +e' >> entrypoint.sh
 RUN echo 'sh ./init.sh' >> entrypoint.sh
+# 判断是否启用ZookeeperClusterManager
+RUN echo 'if [ "${ENABLE_ZOOKEEPER_CLUSTER_MANAGER}" = true ];then' >> entrypoint.sh
+RUN echo '    rm -f /usr/local/vertx/lib/vertx-hazelcast-*' >> entrypoint.sh
+RUN echo 'fi' >> entrypoint.sh
 RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo $CMD' >> entrypoint.sh
 RUN echo '$CMD' >> entrypoint.sh
