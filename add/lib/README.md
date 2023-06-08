@@ -19,6 +19,7 @@
 - j2objc-annotations-x.x.jar Guava依赖
 - jsr305-x.x.x.jar Guava依赖
 - listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar Guava依赖
+- netty-incubator-transport-*-io_uring-x.x.x.Final.jar io_uring依赖
 - bcpkix-jdk18on-x.xx.jar bouncycastle系列jar包
 - bcprov-jdk18on-x.xx.jar bouncycastle系列jar包
 - bcprov-ext-jdk18on-x.xx.jar bouncycastle系列jar包
@@ -46,8 +47,10 @@
 - jcommander-x.xx.jar Pulsar依赖
 - ~~protobuf-java-x.x.x.jar Pulsar依赖(原生镜像已有提供)~~
 - validation-api-x.x.x.jar Pulsar依赖
+- vertx-config-git-x.x.x.jar git系列jar包
 - org.eclipse.jgit-x.x.x.jar jgit系列jar包
 - JavaEWAH-x.x.x.jar jgit依赖
+- jsch-x.x.x.jar jgit依赖
 - hazelcast-x.x.x.jar hazelcast系列jar包
 - vert-zipkin-x.x.x.jar zipkin系列jar包
 - zipkin-x.x.x.jar zipkin系列jar包
