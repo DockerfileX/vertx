@@ -45,6 +45,8 @@ services:
       - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
       #- Xms100M -Xmx100M
       - io.netty.tryReflectionSetAccessible=true
+      # 启用zookeeper cluster manager
+      - ENABLE_ZOOKEEPER_CLUSTER_MANAGER=true
       # 设置vertx的zookeeper的配置文件
       - vertx.zookeeper.config=conf/zookeeper.json
       # jul to log4j
