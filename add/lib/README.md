@@ -32,7 +32,7 @@
 - zookeeper-x.x.x.jar zookeeper系列jar包
 - zookeeper-jute-x.x.x.jar zookeeper系列jar包
 - audience-annotations-x.x.x.jar zookeeper依赖
-- commons-io-x.x.x.jar zookeeper依赖
+- commons-io-x.x.x.jar zookeeper/DroolsUtils依赖
 - curator-*-x.x.x.jar Curator系列jar包，连接zookeeper需要
 - mapstruct-x.x.x.jar mapstruct系列jar包
 - ulid-creator-x.x.x.jar ulid的jar包
@@ -58,3 +58,11 @@
 - zipkin-reporter-brave-x.x.x.jar zipkin系列jar包
 - brave-x.x.x.jar zipkin的埋点库，zipkin依赖
 - brave-instrumentation-http-x.x.x.jar zipkin的埋点库，zipkin依赖
+- drools-*-x.x.x.Final.jar drools系列jar包
+- kie-*-x.x.x.Final.jar drools系列jar包
+- antlr-runtime-x.x.x.jar drools依赖
+- javaparser-core-x.x.x.jar drools依赖
+- mvel2-x.x.x.Final.jar drools依赖
+- mxparser-x.x.x.jar drools依赖
+- xmlpull-x.x.x.x.jar drools依赖
+- xstream-x.x.x.jar drools依赖

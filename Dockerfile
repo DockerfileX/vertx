@@ -50,6 +50,7 @@ RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
 # 复制文件
 COPY add/conf/* /usr/local/vertx/conf
 COPY add/lib/*.jar /usr/local/vertx/lib
+COPY add/skywalking-agent /usr/local/vertx/skywalking-agent
 
 # 运行jar包的文件名
 ENV MYSERVICE_FILE_NAME=myservice.jar
@@ -61,9 +62,13 @@ RUN touch init.sh
 RUN echo '#!/bin/sh' >> entrypoint.sh
 RUN echo 'set +e' >> entrypoint.sh
 RUN echo 'sh ./init.sh' >> entrypoint.sh
-# 判断是否启用ZookeeperClusterManager
-RUN echo 'if [ "${ENABLE_ZOOKEEPER_CLUSTER_MANAGER}" = true ];then' >> entrypoint.sh
+# 判断是否启用ZooKeeper Cluster Manager
+RUN echo 'if [ "${ENABLE_ZOOKEEPER_CLUSTER_MANAGER}"=true ];then' >> entrypoint.sh
 RUN echo '    rm -f /usr/local/vertx/lib/vertx-hazelcast-*' >> entrypoint.sh
+RUN echo 'fi' >> entrypoint.sh
+# 判断是否启用SkyWalking Agent
+RUN echo 'if [ "${ENABLE_SKYWALKING_AGENT}"=true ];then' >> entrypoint.sh
+RUN echo '    ${JAVA_OPTS}=`-javaagent:/usr/local/vertx/skywalking-agent/skywalking-agent.jar ${JAVA_OPTS}`' >> entrypoint.sh
 RUN echo 'fi' >> entrypoint.sh
 RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo $CMD' >> entrypoint.sh
