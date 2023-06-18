@@ -66,3 +66,5 @@
 - mxparser-x.x.x.jar drools依赖
 - xmlpull-x.x.x.x.jar drools依赖
 - xstream-x.x.x.jar drools依赖
+- apm-toolkit-logback-1.x-x.x.x.jar SkyWalking代理采集及打印logback日志需要
+- apm-toolkit-trace-x.x.x.jar SkyWalking代理采集及打印logback日志需要

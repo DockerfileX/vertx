@@ -46,11 +46,11 @@ services:
       #- Xms100M -Xmx100M
       - io.netty.tryReflectionSetAccessible=true
       # 启用zookeeper cluster manager
-      - ENABLE_ZOOKEEPER_CLUSTER_MANAGER=true
+      - ZOOKEEPER_CLUSTER_MANAGER_ENABLE=true
       # 设置vertx的zookeeper的配置文件
       - vertx.zookeeper.config=conf/zookeeper.json
       # 启用SkyWalking Agent
-      - ENABLE_SKYWALKING_AGENT=true
+      - SW_AGENT_ENABLE=true
       # SkyWalking Agent的项目名称
       - SW_AGENT_NAME=xxx-svr
       # SkyWalking OAP 服务器的地址
