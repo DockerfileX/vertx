@@ -68,3 +68,5 @@
 - xstream-x.x.x.jar drools依赖
 - apm-toolkit-logback-1.x-x.x.x.jar SkyWalking代理采集及打印logback日志需要
 - apm-toolkit-trace-x.x.x.jar SkyWalking代理采集及打印logback日志需要
+- transmittable-thread-local-2.14.2.jar 异步环境支持上下文传递
+- logback-mdc-ttl-1.0.2.jar 让MDC也支持异步环境

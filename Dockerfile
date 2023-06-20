@@ -70,7 +70,7 @@ RUN echo 'fi' >> entrypoint.sh
 # 判断是否启用SkyWalking Agent
 RUN echo 'echo "SW_AGENT_ENABLE=${SW_AGENT_ENABLE}"' >> entrypoint.sh
 RUN echo 'if [[ ${SW_AGENT_ENABLE} = "true" ]];then' >> entrypoint.sh
-RUN echo '    JAVA_OPTS="-Dlogback.configurationFile=/usr/local/vertx/conf/logback.skywalking.xml -javaagent:/usr/local/vertx/skywalking-agent/skywalking-agent.jar ${JAVA_OPTS}"' >> entrypoint.sh
+RUN echo '    JAVA_OPTS="-Xbootclasspath/a:/usr/local/vertx/lib/transmittable-thread-local-2.14.2.jar -javaagent:/usr/local/vertx/lib/transmittable-thread-local-2.14.2.jar -javaagent:/usr/local/vertx/skywalking-agent/skywalking-agent.jar -Dlogback.configurationFile=/usr/local/vertx/conf/logback.skywalking.xml ${JAVA_OPTS}"' >> entrypoint.sh
 RUN echo 'fi' >> entrypoint.sh
 RUN echo 'echo "JAVA_OPTS=${JAVA_OPTS}"' >> entrypoint.sh
 RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh

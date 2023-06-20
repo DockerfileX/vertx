@@ -29,8 +29,8 @@
 
     <!-- 输出到控制台 -->
     <appender name="console" class="ConsoleAppender">
-        <encoder class="LayoutWrappingEncoder">
-            <layout class="TraceIdMDCPatternLogbackLayout">
+        <encoder>
+            <layout>
                 <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             </layout>
         </encoder>
@@ -43,8 +43,8 @@
             <fileNamePattern>${LOG_FILE_NAME_PATTERN}</fileNamePattern>
             <maxFileSize>5MB</maxFileSize>
         </rollingPolicy>
-        <encoder class="LayoutWrappingEncoder">
-            <layout class="TraceIdMDCPatternLogbackLayout">
+        <encoder>
+            <layout>
                 <pattern>${FILE_LOG_PATTERN}</pattern>
             </layout>
         </encoder>
@@ -57,8 +57,8 @@
             <fileNamePattern>${ERR_FILE_NAME_PATTERN}</fileNamePattern>
             <maxFileSize>5MB</maxFileSize>
         </rollingPolicy>
-        <encoder class="LayoutWrappingEncoder">
-            <layout class="TraceIdMDCPatternLogbackLayout">
+        <encoder>
+            <layout>
                 <pattern>${FILE_LOG_PATTERN}</pattern>
             </layout>
         </encoder>
@@ -92,9 +92,9 @@
     </appender>
 
     <appender name="grpc-log" class="GRPCLogClientAppender">
-        <encoder class="LayoutWrappingEncoder">
-            <layout class="TraceIdMDCPatternLogbackLayout">
-                <Pattern>${FILE_LOG_PATTERN}</Pattern>
+        <encoder>
+            <layout>
+                <Pattern>${GRPC_LOG_PATTERN}</Pattern>
             </layout>
         </encoder>
     </appender>
