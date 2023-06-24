@@ -30,9 +30,7 @@
     <!-- 输出到控制台 -->
     <appender name="console" class="ConsoleAppender">
         <encoder>
-            <layout>
-                <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-            </layout>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
@@ -44,9 +42,7 @@
             <maxFileSize>5MB</maxFileSize>
         </rollingPolicy>
         <encoder>
-            <layout>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </layout>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
@@ -58,9 +54,7 @@
             <maxFileSize>5MB</maxFileSize>
         </rollingPolicy>
         <encoder>
-            <layout>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </layout>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
         <filter class="ThresholdFilter">
             <level>WARN</level>
@@ -93,9 +87,7 @@
 
     <appender name="grpc-log" class="GRPCLogClientAppender">
         <encoder>
-            <layout>
-                <Pattern>${GRPC_LOG_PATTERN}</Pattern>
-            </layout>
+            <Pattern>${GRPC_LOG_PATTERN}</Pattern>
         </encoder>
     </appender>
 
