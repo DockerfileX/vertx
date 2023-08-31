@@ -45,7 +45,7 @@ RUN rm -rf /usr/local/vertx/lib/zookeeper-*
 RUN rm -rf /usr/local/vertx/lib/commons-io-*
 RUN rm -rf /usr/local/vertx/lib/curator-*
 RUN rm -rf /usr/local/vertx/lib/commons-io-*
-RUN rm -rf /usr/local/vertx/lib/ojdbc11-*
+RUN rm -rf /usr/local/vertx/lib/ojdbc21-*
 
 # 复制文件
 COPY add/conf/* /usr/local/vertx/conf
