@@ -46,12 +46,6 @@ services:
       - ZOOKEEPER_CLUSTER_MANAGER_ENABLE=true
       # 设置vertx的zookeeper的配置文件
       - vertx.zookeeper.config=conf/zookeeper.json
-      # 启用SkyWalking Agent
-      - SW_AGENT_ENABLE=true
-      # SkyWalking Agent的项目名称
-      - SW_AGENT_NAME=xxx-svr
-      # SkyWalking OAP 服务器的地址
-      - SW_AGENT_COLLECTOR_BACKEND_SERVICES=skywalking-oap:11800
       # jul to log4j
       #- java.util.logging.manager=org.apache.logging.log4j.jul.LogManager
       # 设置Log4j2使用异步日志
