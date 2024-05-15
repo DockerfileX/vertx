@@ -1,11 +1,7 @@
-ARG VERSION
-ARG JDK_VERSION=latest
-
-FROM --platform=linux/amd64 vertx/vertx4:${VERSION} AS vertx
-
 ARG JDK_VERSION
+
 # 基础镜像
-FROM --platform=${TARGETPLATFORM} nnzbz/openjdk:${JDK_VERSION}
+FROM --platform=${TARGETPLATFORM} nnzbz/temurinx:${JDK_VERSION}
 
 # 作者及邮箱
 # 镜像的作者和邮箱
@@ -19,38 +15,12 @@ ENV WORKDIR=/usr/local/vertx
 RUN mkdir -p ${WORKDIR}
 WORKDIR ${WORKDIR}
 
-# 复制vertx
-COPY --from=vertx /usr/local/vertx /usr/local/vertx
+# 设置Path环境变量
 ENV PATH=/usr/local/vertx/bin:$PATH
 
-# 删除冲突的配置文件
-RUN rm -rf /usr/local/vertx/conf/default-cluster.xml
-RUN rm -rf /usr/local/vertx/conf/logging.properties
-
-# 删除旧的不兼容的jar包
-RUN rm -rf /usr/local/vertx/lib/hazelcast-*
-# RUN rm -rf /usr/local/vertx/lib/netty-*
-RUN rm -rf /usr/local/vertx/lib/bcpkix-jdk15on-*
-RUN rm -rf /usr/local/vertx/lib/bcprov-jdk15on-*
-RUN rm -rf /usr/local/vertx/lib/slf4j-*
-RUN rm -rf /usr/local/vertx/lib/jackson-*
-RUN rm -rf /usr/local/vertx/lib/guava-*
-RUN rm -rf /usr/local/vertx/lib/checker-qual-*
-RUN rm -rf /usr/local/vertx/lib/error_prone_annotations-*
-RUN rm -rf /usr/local/vertx/lib/failureaccess-*
-RUN rm -rf /usr/local/vertx/lib/j2objc-annotations-*
-RUN rm -rf /usr/local/vertx/lib/jsr305-*
-RUN rm -rf /usr/local/vertx/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
-RUN rm -rf /usr/local/vertx/lib/zookeeper-*
-RUN rm -rf /usr/local/vertx/lib/commons-io-*
-RUN rm -rf /usr/local/vertx/lib/curator-*
-RUN rm -rf /usr/local/vertx/lib/commons-io-*
-RUN rm -rf /usr/local/vertx/lib/ojdbc21-*
-
 # 复制文件
-COPY add/conf/* /usr/local/vertx/conf
-COPY add/lib/*.jar /usr/local/vertx/lib
-COPY add/skywalking-agent /usr/local/vertx/skywalking-agent
+COPY add/config/* /usr/local/vertx/config
+COPY add/lib/* /usr/local/vertx/lib
 
 # 运行jar包的文件名
 ENV MYSERVICE_FILE_NAME=myservice.jar
@@ -66,11 +36,6 @@ RUN echo 'sh ./init.sh' >> entrypoint.sh
 RUN echo 'echo "ZOOKEEPER_CLUSTER_MANAGER_ENABLE=${ZOOKEEPER_CLUSTER_MANAGER_ENABLE}"' >> entrypoint.sh
 RUN echo 'if [[ ${ZOOKEEPER_CLUSTER_MANAGER_ENABLE} = "true" ]];then' >> entrypoint.sh
 RUN echo '    rm -f /usr/local/vertx/lib/vertx-hazelcast-*' >> entrypoint.sh
-RUN echo 'fi' >> entrypoint.sh
-# 判断是否启用SkyWalking Agent
-RUN echo 'echo "SW_AGENT_ENABLE=${SW_AGENT_ENABLE}"' >> entrypoint.sh
-RUN echo 'if [[ ${SW_AGENT_ENABLE} = "true" ]];then' >> entrypoint.sh
-RUN echo '    JAVA_OPTS="-Xbootclasspath/a:/usr/local/vertx/lib/transmittable-thread-local-2.14.2.jar -javaagent:/usr/local/vertx/lib/transmittable-thread-local-2.14.2.jar -javaagent:/usr/local/vertx/skywalking-agent/skywalking-agent.jar -Dlogback.configurationFile=/usr/local/vertx/conf/logback.skywalking.xml ${JAVA_OPTS}"' >> entrypoint.sh
 RUN echo 'fi' >> entrypoint.sh
 RUN echo 'echo "JAVA_OPTS=${JAVA_OPTS}"' >> entrypoint.sh
 RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh

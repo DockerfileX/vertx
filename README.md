@@ -10,7 +10,7 @@ Environment for **Vert.x** Appication
 
 1. Alpine
 2. OpenJDK 18
-3. Vert.x 4.4.5
+3. Vert.x 4.5.7
 4. TZ=Asia/Shanghai
 5. C.UTF-8
 6. curl和telnet
@@ -20,11 +20,8 @@ Environment for **Vert.x** Appication
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.4.5 --build-arg VERSION=4.4.5 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.4.5-alpine --build-arg VERSION=4.4.5 --build-arg JDK_VERSION=alpine . --push
-# latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:latest --build-arg VERSION=4.4.5 --build-arg JDK_VERSION=18 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:alpine --build-arg VERSION=4.4.5 --build-arg JDK_VERSION=alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.5.7 --build-arg JDK_VERSION=21 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.5.7-alpine --build-arg JDK_VERSION=21-alpine . --push
 ```
 
 ## 4. Swarm
@@ -38,7 +35,7 @@ vi /usr/local/vertx/stack/xxx-svr-stack.yml
 version: "3.9"
 services:
   svr:
-    image: nnzbz/vertx:4.4.5
+    image: nnzbz/vertx:4.5.7
     init: true
     environment:
       - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
