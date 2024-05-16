@@ -11,7 +11,7 @@ LABEL description="Environment for exec Vert.x Appication\
     为运行Vert.x而提供的环境"
 
 # 设置工作目录
-ENV WORKDIR=/usr/local/vertx
+ENV WORKDIR=/usr/local/vertx/
 RUN mkdir -p ${WORKDIR}
 WORKDIR ${WORKDIR}
 
@@ -19,8 +19,8 @@ WORKDIR ${WORKDIR}
 ENV PATH=/usr/local/vertx/bin:$PATH
 
 # 复制文件
-COPY add/config/* /usr/local/vertx/config
-COPY add/lib/* /usr/local/vertx/lib
+COPY add/config/* /usr/local/vertx/config/
+COPY add/lib/* /usr/local/vertx/lib/
 
 # 运行jar包的文件名
 ENV MYSERVICE_FILE_NAME=myservice.jar

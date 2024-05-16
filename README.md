@@ -27,7 +27,7 @@ docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/vertx:4.5.7-alpi
 ## 4. Swarm
 
 ```sh
-mkdir -p /usr/local/vertx/{bin,conf,stack,log/xxx-svr}
+mkdir -p /usr/local/vertx/{bin,config,stack,log/xxx-svr}
 vi /usr/local/vertx/stack/xxx-svr-stack.yml
 ```
 
@@ -38,14 +38,14 @@ services:
     image: nnzbz/vertx:4.5.7
     init: true
     environment:
-      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp conf/*:lib/*.jar --options conf/option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
+      - PROG_ARGS=run xxx.xxx.verticle.MainVerticle -cp config/*:lib/*.jar --options config/option.json --ha --hagroup xxx -Dhazelcast.logging.type=slf4j
       - JAVA_OPTS=--add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/sun.net=ALL-UNNAMED --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
       #- Xms100M -Xmx100M
       - io.netty.tryReflectionSetAccessible=true
       # 启用zookeeper cluster manager
       - ZOOKEEPER_CLUSTER_MANAGER_ENABLE=true
       # 设置vertx的zookeeper的配置文件
-      - vertx.zookeeper.config=conf/zookeeper.json
+      - vertx.zookeeper.config=config/zookeeper.json
       # jul to log4j
       #- java.util.logging.manager=org.apache.logging.log4j.jul.LogManager
       # 设置Log4j2使用异步日志
@@ -56,9 +56,9 @@ services:
       # 初始化执行的脚本
       #- /usr/local/vertx/stack/init.sh:/usr/local/vertx/init.sh:z
       # 配置文件
-      - /usr/local/vertx/conf/xxx-svr-option.json:/usr/local/vertx/conf/option.json:z
-      - /usr/local/vertx/conf/xxx-svr-config.json:/usr/local/vertx/conf/config.json:z
-      - /usr/local/vertx/conf/zookeeper.json:/usr/local/vertx/conf/zookeeper.json:z
+      - /usr/local/vertx/config/xxx-svr-option.json:/usr/local/vertx/config/option.json:z
+      - /usr/local/vertx/config/xxx-svr-config.json:/usr/local/vertx/config/config.json:z
+      - /usr/local/vertx/config/zookeeper.json:/usr/local/vertx/config/zookeeper.json:z
       # 配置日志目录(注意要先创建目录/var/log/xxx-svr/)
       - /usr/local/vertx/log/xxx-svr/:/usr/local/vertx/logs/:z
       # 外部jar包
@@ -82,7 +82,7 @@ networks:
     name: rebue
 ```
 
-- /usr/local/vertx/conf/xxx-svr-config.json
+- /usr/local/vertx/config/xxx-svr-config.json
 
 ```json
 {
@@ -107,7 +107,7 @@ networks:
 }
 ```
 
-- /usr/local/vertx/conf/xxx-svr-option.json
+- /usr/local/vertx/config/xxx-svr-option.json
 
 ```json
 {
@@ -121,7 +121,7 @@ networks:
 }
 ```
 
-- /usr/local/vertx/conf/zookeeper.json
+- /usr/local/vertx/config/zookeeper.json
 
 ```json
 {
