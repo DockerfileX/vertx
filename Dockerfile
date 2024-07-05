@@ -40,7 +40,7 @@ RUN echo 'fi' >> entrypoint.sh
 RUN echo 'echo "JAVA_OPTS=${JAVA_OPTS}"' >> entrypoint.sh
 RUN echo 'CMD="vertx ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo "CMD=${CMD}"' >> entrypoint.sh
-RUN echo '${CMD}' >> entrypoint.sh
+RUN echo 'exec ${CMD}' >> entrypoint.sh
 
 # 授权执行
 RUN chmod +x ./init.sh
